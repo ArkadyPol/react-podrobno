@@ -4,10 +4,15 @@ type RatingPropsType = {
 
 function Rating(props: RatingPropsType) {
   console.log('Rating rendering');
-  let boolArr: Array<boolean>;
-  boolArr = new Array(5).fill(true, 0, props.value).fill(false, props.value);
-  let stars = boolArr.map((value, idx) => <Star selected={value} key={idx}/>);
-  return <div>{stars}</div>;
+  return (
+      <div>
+        <Star selected={props.value > 0}/>
+        <Star selected={props.value > 1}/>
+        <Star selected={props.value > 2}/>
+        <Star selected={props.value > 3}/>
+        <Star selected={props.value > 4}/>
+      </div>
+  );
 }
 
 type StarPropsType = {
