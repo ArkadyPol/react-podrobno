@@ -10,10 +10,9 @@ function Rating(props: RatingPropsType) {
   return <div>{stars}</div>;
 }
 
-type StarPropsType =
-    {
-      selected: boolean
-    }
+type StarPropsType = {
+  selected: boolean
+}
 
 function Star(props: StarPropsType) {
   console.log('Star rendering');
