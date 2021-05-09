@@ -1,22 +1,29 @@
 import './App.css';
 
 function App() {
-  debugger
+  console.log('App rendering')
   return (
       <div>
-        This App Component
+        <AppTitle/>
         <Rating/>
         <Accordion/>
+        <Rating/>
       </div>
   );
 }
 
+function AppTitle() {
+  console.log('AppTitle rendering')
+  return <>This App Component</>
+}
+
 function Star() {
+  console.log('Star rendering')
   return <div>star</div>
 }
 
 function Rating() {
-  debugger
+  console.log('Rating rendering')
   return (
       <div>
         <Star/>
@@ -28,16 +35,28 @@ function Rating() {
   )
 }
 
+function AccordionTitle() {
+  console.log('AccordionTitle rendering')
+  return <h3>Меню</h3>;
+}
+
+function AccordionBody() {
+  console.log('AccordionBody rendering')
+  return (
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+  );
+}
+
 function Accordion() {
-  debugger
+  console.log('Accordion rendering')
   return (
       <div>
-        <h3>Меню</h3>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
+        <AccordionTitle/>
+        <AccordionBody/>
       </div>
   );
 }
