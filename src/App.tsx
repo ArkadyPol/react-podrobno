@@ -10,7 +10,7 @@ import UncontrolledOnOff from './components/OnOff/UncontrolledOnOff';
 function App() {
   const [ratingValue, setRatingValue] = useState<RatingValueType>(0);
   const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
-  const [on, setOn] = useState<boolean>(false);
+  const [switchOn, setSwitchOn] = useState<boolean>(false);
   console.log('App rendering')
   return (
       <div className="App">
@@ -19,8 +19,8 @@ function App() {
         <Accordion title="Users" collapsed={accordionCollapsed} setCollapsed={setAccordionCollapsed}/>
         <Rating value={ratingValue} onClick={setRatingValue}/>
         <UncontrolledRating/>
-        <OnOff on={on} setOn={setOn}/>
-        <UncontrolledOnOff/>
+        <OnOff on={switchOn} setOn={setSwitchOn}/>
+        <UncontrolledOnOff onChange={setSwitchOn}/>{switchOn.toString()}
       </div>
   );
 }
