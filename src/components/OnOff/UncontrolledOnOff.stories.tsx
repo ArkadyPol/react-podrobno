@@ -8,7 +8,14 @@ export default {
 
 const Template: Story<PropsType> = (args) => <UncontrolledOnOff {...args} />;
 
-export const UncontrolledOnOffExample = Template.bind({});
+export const OnMode = Template.bind({});
+OnMode.args = {
+  defaultOn: true
+};
+export const OffMode = Template.bind({});
+OffMode.args = {
+  defaultOn: false
+};
 
 
 
