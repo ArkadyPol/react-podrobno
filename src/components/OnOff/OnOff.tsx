@@ -1,10 +1,11 @@
-type PropsType = {
+export type PropsType = {
   on: boolean
   setOn: (on: boolean) => void
 }
 
 
 function OnOff(props: PropsType) {
+  document.addEventListener('click', ()=> {},)
   console.log('OnOff rendering')
   const onStyle = {
     width: '30px',
