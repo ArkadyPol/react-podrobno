@@ -18,7 +18,7 @@ function App() {
         <UncontrolledAccordion title="Menu"/>
         <Accordion title="Users" collapsed={accordionCollapsed} setCollapsed={setAccordionCollapsed}/>
         <Rating value={ratingValue} onClick={setRatingValue}/>
-        <UncontrolledRating/>
+        <UncontrolledRating onChange={(value) => console.log(value)}/>
         <OnOff on={switchOn} setOn={setSwitchOn}/>
         <UncontrolledOnOff onChange={setSwitchOn}/>{switchOn.toString()}
       </div>
