@@ -32,7 +32,36 @@ export const GetValueOfUncontrolledInputByButtonPress: Story<InputPropsType> = (
     <button onClick={save}>save</button>
     {' '} - actual value: {value}</>
 }
+export const ControlledInput: Story<InputPropsType> = (args) => {
+  const [parentValue, setParentValue] = useState<string>('');
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setParentValue(e.currentTarget.value);
+  }
+  return <input {...args} value={parentValue} onChange={onChange}/>
+}
 
+export const ControlledCheckbox: Story<InputPropsType> = (args) => {
+  const [parentValue, setParentValue] = useState<boolean>(true);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setParentValue(e.currentTarget.checked);
+  }
+  return <input {...args} type="checkbox" checked={parentValue} onChange={onChange}/>
+
+}
+
+export const ControlledSelect: Story = () => {
+  const [parentValue, setParentValue] = useState<string | undefined>(undefined);
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setParentValue(e.currentTarget.value);
+  }
+  return <select value={parentValue} onChange={onChange}>
+    <option>none</option>
+    <option value="1">Minsk</option>
+    <option value="2">Moscow</option>
+    <option value="3">Kiev</option>
+  </select>
+
+}
 
 export const ControlledInputWithFixedValue = Template.bind({});
 ControlledInputWithFixedValue.args = {
