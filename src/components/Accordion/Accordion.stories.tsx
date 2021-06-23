@@ -6,21 +6,37 @@ export default {
   title: 'Accordion',
   component: Accordion,
   argTypes: {setCollapsed: {action: 'setCollapsed'}},
-  args: {title: 'Menu'}
 } as Meta;
 
 const Template: Story<AccordionPropsType> = (args) => <Accordion {...args} />;
 
-export const CollapsedMode = Template.bind({});
-CollapsedMode.args = {
-  collapsed: true
+export const MenuCollapsedMode = Template.bind({});
+MenuCollapsedMode.args = {
+  collapsed: true,
+  items: [],
+  title: 'Menu'
 };
-export const UncollapsedMode = Template.bind({});
-UncollapsedMode.args = {
-  collapsed: false
+export const UsersUncollapsedMode = Template.bind({});
+UsersUncollapsedMode.args = {
+  collapsed: false,
+  items: [
+    {title: 'Dimych', value: 1},
+    {title: 'Artem', value: 2},
+    {title: 'Valera', value: 3}
+  ],
+  title: 'Users'
 };
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
   const [value, setValue] = useState<boolean>(false);
-  return <Accordion {...args} collapsed={value} setCollapsed={setValue}/>
+  return <Accordion {...args} collapsed={value} setCollapsed={setValue}
+                    onClick={(value) => alert(`user with Id ${value} should be happy`)}/>
+}
+ModeChanging.args = {
+  items: [
+    {title: 'Dimych', value: 1},
+    {title: 'Artem', value: 2},
+    {title: 'Valera', value: 3}
+  ],
+  title: 'Users'
 }
 

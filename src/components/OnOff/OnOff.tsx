@@ -5,7 +5,6 @@ export type PropsType = {
 
 
 function OnOff(props: PropsType) {
-  document.addEventListener('click', ()=> {},)
   console.log('OnOff rendering')
   const onStyle = {
     width: '30px',

@@ -1,0 +1,30 @@
+.select {
+    cursor: pointer;
+    width: 100px;
+    border-bottom: 2px solid blue;
+    position: relative;
+}
+
+.svgIcon {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    font-size: 1.5rem;
+    right: 0;
+    top: calc(50% - 12px);
+}
+
+.options {
+    border: 1px solid black;
+    width: 100px;
+}
+
+.option {
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.option:hover {
+    background-color: lightgrey;
+}
