@@ -1,30 +1,17 @@
-.select {
-    cursor: pointer;
-    width: 100px;
-    border-bottom: 2px solid blue;
-    position: relative;
-}
-
-.svgIcon {
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    font-size: 1.5rem;
-    right: 0;
-    top: calc(50% - 12px);
-}
-
-.options {
+.select .main {
     border: 1px solid black;
-    width: 100px;
+    display: inline-block;
+    min-height: 20px;
+    min-width: 40px;
 }
 
-.option {
-    cursor: pointer;
-    width: 100%;
-
+.items {
+    position: absolute;
+    padding: 5px;
+    border: 1px solid black;
 }
 
-.option:hover {
-    background-color: lightgrey;
+.item.selected {
+    background-color: blue;
+    color: white;
 }
