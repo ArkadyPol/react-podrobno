@@ -33,8 +33,6 @@ export const Example1: Story = () => {
         <Users users={users}/>
       </>
   )
-
-
 }
 
 
