@@ -1,5 +1,6 @@
 import {Meta, Story} from '@storybook/react';
-import {memo, useMemo, useState} from 'react';
+import {memo, useCallback, useMemo, useState} from 'react';
+import Select from '../components/Select/Select';
 
 export default {
   title: 'useMemo',
@@ -73,6 +74,35 @@ export const HelpsToReactMemo: Story = () => {
         <Users users={newArray}/>
       </>
   )
+}
+
+const MemoizedSelect = memo(Select)
+
+export const HelpsExample: Story = () => {
+  console.log('HelpsExample')
+  const [counter, setCounter] = useState(0)
+  const [cities, setCities] = useState(
+      [
+        {value: '1', title: 'Minsk', country: 'Belarus', population: 2_000_000},
+        {value: '2', title: 'Moscow', country: 'Russia', population: 12_600_000},
+        {value: '3', title: 'Kiev', country: 'Ukraine', population: 3_000_000}
+      ]
+  )
+  const onChange = useCallback((value: any) => {
+    console.log('onChange', value)
+  }, [])
+
+  const citiesWithM = useMemo(() => cities.filter(c => c.title.toLowerCase().indexOf('m') > -1), [cities])
+  const citiesFromBelarus = useMemo(() => cities.filter(c => c.country === 'Belarus'), [cities])
+  const citiesWithPopMoreThan10M = useMemo(() => cities.filter(c => c.population > 10_000_000), [cities])
+
+  return <>
+    <MemoizedSelect onChange={onChange} items={citiesWithM}/>
+    <MemoizedSelect onChange={onChange} items={citiesFromBelarus}/>
+    <MemoizedSelect onChange={onChange} items={citiesWithPopMoreThan10M}/>
+    {counter}
+    <button onClick={() => setCounter(counter + 1)}>+</button>
+  </>
 }
 
 
