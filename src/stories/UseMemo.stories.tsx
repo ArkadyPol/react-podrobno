@@ -105,5 +105,45 @@ export const HelpsExample: Story = () => {
   </>
 }
 
+type BooksSecretPropsType = {
+  books: Array<string>
+  addBook: () => void
+}
+
+const BooksSecret = (props: BooksSecretPropsType) => {
+  console.log('BOOKS SECRET')
+  return <div>
+    <button onClick={props.addBook}>add book</button>
+    {props.books.map((book, i) => <div key={i}>{book}</div>)}
+  </div>
+}
+
+const Books = memo(BooksSecret)
+
+export const LikeUseCallback: Story = () => {
+  console.log('LikeUseCallback')
+  const [counter, setCounter] = useState(0)
+  const [books, setBooks] = useState(['REACT', 'JS', 'CSS', 'HTML'])
+
+  const memoizedAddBook = useMemo(() => () => {
+    setBooks([...books, 'Angular'])
+  }, [books])
+
+  const memoizedAddBook2 = useCallback(() => {
+    setBooks([...books, 'Angular'])
+  }, [books])
+
+
+  const newArray = useMemo(() => books.filter(b => b.toLowerCase().indexOf('a') > -1), [books])
+
+  return (
+      <>
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+        {counter}
+        <Books books={newArray} addBook={memoizedAddBook2}/>
+      </>
+  )
+}
+
 
 
